@@ -1,0 +1,38 @@
+﻿@using Facebook.Web.Mvc
+@Html.CanvasActionLink("Invite", "Index", "Home")
+&nbsp;
+@Html.CanvasActionLink("Play", "Play", "Home")
+<fb:serverfbml style="width: 650px;"> 
+<script type="text/fbml">
+    <fb:fbml> 
+    	<fb:request-form
+    		action="http://casino.tweetsayings.com/invite/sent"
+    		method="POST"
+    		invite="true"
+    		type="Slot Machine"
+    		content="Try out Slot Machine!
+    			<fb:req-choice url='http://apps.facebook.com/casinomachine' /> 
+                "> 
+    		<fb:multi-friend-selector
+    			showborder="false"
+    			actiontext="Invite your friends to try Slot Machine."    			
+    			rows="3"
+    		/> 
+    	</fb:request-form> 
+    </fb:fbml>
+</script> 
+</fb:serverfbml>
+<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php"
+    type="text/javascript"></script>
+<script type="text/javascript">
+    FB_RequireFeatures(
+    	["CanvasUtil"],
+    	function () {
+    	    FB.XdComm.Server.init('/xd_receiver.htm');
+    	    FB.CanvasClient.startTimerToSizeToContent();
+    	}
+    );
+</script>
+<script type="text/javascript">
+    FB_RequireFeatures(["XFBML"], function () { FB.Facebook.init("54f1a13a0f27743718926cc2135d54fe", "/xd_receiver.htm"); });	
+</script>
