@@ -1,0 +1,39 @@
+﻿@using Facebook.Web.Mvc
+@{
+    ViewBag.Title = "Play";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="@Url.Content("~/Scripts/SlotMachine.js")" type="text/javascript"></script>
+@Html.CanvasActionLink("Invite", "Index", "Home")
+&nbsp;
+@Html.CanvasActionLink("Play", "Play", "Home")
+<div class="slotmachine-outer">
+    <div class="upper-banner">
+        <img id="upper-banner" />
+    </div>
+    <div class="slotmachine">
+        <div class="roles">
+            <div id="wheel1" class="role">
+                <img class="spinning" src="../../Content/SlotMachine/Images/Role-moving.png" alt="" />
+                <img class="not-spinning" src="../../Content/SlotMachine/Images/Role.png" alt="" />
+            </div>
+            <div id="wheel2" class="role">
+                <img class="spinning" src="../../Content/SlotMachine/Images/Role-moving.png" alt="" />
+                <img class="not-spinning" src="../../Content/SlotMachine/Images/Role.png" alt="" />
+            </div>
+            <div id="wheel3" class="role">
+                <img class="spinning" src="../../Content/SlotMachine/Images/Role-moving.png" alt="" />
+                <img class="not-spinning" src="../../Content/SlotMachine/Images/Role.png" alt="" />
+            </div>
+        </div>
+        <div class="handle-outer">
+            <img id="handle" src="../../Content/SlotMachine/Images/Machine-Handle.png" alt="" />
+        </div>
+        <img id="overlay" src="../../Content/SlotMachine/Images/Overlay.png" alt="" />
+        <div>
+            Score : <span id="slotCredits"></span>
+        </div>
+    </div>
+    <div class="lower-banner">
+    </div>
+</div>

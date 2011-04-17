@@ -8,28 +8,24 @@ using Facebook;
 using Facebook.Web;
 using Facebook.Web.Mvc;
 using System.Web.Routing;
+using System.Text;
 
 namespace SlotMachine.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        public IFormsAuthenticationService FormsService { get; set; }        
+        public IFormsAuthenticationService FormsService { get; set; }
 
         protected override void Initialize(RequestContext requestContext)
         {
-            if (FormsService == null) { FormsService = new FormsAuthenticationService(); }            
+            if (FormsService == null) { FormsService = new FormsAuthenticationService(); }
             base.Initialize(requestContext);
         }
 
         [CanvasAuthorize(Permissions = "user_about_me")]
         public ActionResult Index()
-        {            
-            LogInUser();            
-            return View();
-        }
-
-        public ActionResult Play()
         {
+            LogInUser();
             return View();
         }
 
@@ -37,10 +33,30 @@ namespace SlotMachine.Controllers
         {
             if (!User.Identity.IsAuthenticated)
             {
-                var fb = new FacebookWebClient();
+                FacebookWebClient fb = new FacebookWebClient();
                 dynamic result = fb.Get("me");
-                FormsService.SignIn(result.id, true);
+                long fbId = long.Parse(result.id);
+
+                AppUser appUser = Ctx.AppUsers.FirstOrDefault(u => u.FacebookId == fbId);
+
+                if (appUser == null)
+                {
+                    appUser = AppUser.CreateAppUser(fbId);
+                    Ctx.AppUsers.AddObject(appUser);
+                }
+                else
+                {
+                    if (appUser.LastVisited != DateTime.Today)
+                    {
+                        appUser.LastVisited = DateTime.Today;
+                        appUser.InvitationSentToday = 0;
+                    }
+                }
+
+                Ctx.SaveChanges();
+
+                FormsService.SignIn(appUser.Id.ToString(), false);
             }
-        }        
+        }
     }
 }
