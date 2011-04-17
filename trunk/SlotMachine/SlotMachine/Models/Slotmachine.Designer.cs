@@ -115,11 +115,23 @@ namespace SlotMachine.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="facebookId">Initial value of the FacebookId property.</param>
-        public static AppUser CreateAppUser(global::System.Int64 id, global::System.Int64 facebookId)
+        /// <param name="points">Initial value of the Points property.</param>
+        /// <param name="lastVisited">Initial value of the LastVisited property.</param>
+        /// <param name="timesPlayed">Initial value of the TimesPlayed property.</param>
+        /// <param name="jackPotCount">Initial value of the JackPotCount property.</param>
+        /// <param name="totalInvitationSent">Initial value of the TotalInvitationSent property.</param>
+        /// <param name="invitationSentToday">Initial value of the InvitationSentToday property.</param>
+        public static AppUser CreateAppUser(global::System.Int64 id, global::System.Int64 facebookId, global::System.Double points, global::System.DateTime lastVisited, global::System.Int32 timesPlayed, global::System.Int32 jackPotCount, global::System.Int32 totalInvitationSent, global::System.Int32 invitationSentToday)
         {
             AppUser appUser = new AppUser();
             appUser.Id = id;
             appUser.FacebookId = facebookId;
+            appUser.Points = points;
+            appUser.LastVisited = lastVisited;
+            appUser.TimesPlayed = timesPlayed;
+            appUser.JackPotCount = jackPotCount;
+            appUser.TotalInvitationSent = totalInvitationSent;
+            appUser.InvitationSentToday = invitationSentToday;
             return appUser;
         }
 
@@ -180,9 +192,9 @@ namespace SlotMachine.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Double> Points
+        public global::System.Double Points
         {
             get
             {
@@ -197,16 +209,16 @@ namespace SlotMachine.Models
                 OnPointsChanged();
             }
         }
-        private Nullable<global::System.Double> _Points;
-        partial void OnPointsChanging(Nullable<global::System.Double> value);
+        private global::System.Double _Points;
+        partial void OnPointsChanging(global::System.Double value);
         partial void OnPointsChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> LastVisited
+        public global::System.DateTime LastVisited
         {
             get
             {
@@ -221,16 +233,16 @@ namespace SlotMachine.Models
                 OnLastVisitedChanged();
             }
         }
-        private Nullable<global::System.DateTime> _LastVisited;
-        partial void OnLastVisitedChanging(Nullable<global::System.DateTime> value);
+        private global::System.DateTime _LastVisited;
+        partial void OnLastVisitedChanging(global::System.DateTime value);
         partial void OnLastVisitedChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> TimesPlayed
+        public global::System.Int32 TimesPlayed
         {
             get
             {
@@ -245,16 +257,16 @@ namespace SlotMachine.Models
                 OnTimesPlayedChanged();
             }
         }
-        private Nullable<global::System.Int32> _TimesPlayed;
-        partial void OnTimesPlayedChanging(Nullable<global::System.Int32> value);
+        private global::System.Int32 _TimesPlayed;
+        partial void OnTimesPlayedChanging(global::System.Int32 value);
         partial void OnTimesPlayedChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> JackPotCount
+        public global::System.Int32 JackPotCount
         {
             get
             {
@@ -269,9 +281,57 @@ namespace SlotMachine.Models
                 OnJackPotCountChanged();
             }
         }
-        private Nullable<global::System.Int32> _JackPotCount;
-        partial void OnJackPotCountChanging(Nullable<global::System.Int32> value);
+        private global::System.Int32 _JackPotCount;
+        partial void OnJackPotCountChanging(global::System.Int32 value);
         partial void OnJackPotCountChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TotalInvitationSent
+        {
+            get
+            {
+                return _TotalInvitationSent;
+            }
+            set
+            {
+                OnTotalInvitationSentChanging(value);
+                ReportPropertyChanging("TotalInvitationSent");
+                _TotalInvitationSent = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TotalInvitationSent");
+                OnTotalInvitationSentChanged();
+            }
+        }
+        private global::System.Int32 _TotalInvitationSent;
+        partial void OnTotalInvitationSentChanging(global::System.Int32 value);
+        partial void OnTotalInvitationSentChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 InvitationSentToday
+        {
+            get
+            {
+                return _InvitationSentToday;
+            }
+            set
+            {
+                OnInvitationSentTodayChanging(value);
+                ReportPropertyChanging("InvitationSentToday");
+                _InvitationSentToday = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("InvitationSentToday");
+                OnInvitationSentTodayChanged();
+            }
+        }
+        private global::System.Int32 _InvitationSentToday;
+        partial void OnInvitationSentTodayChanging(global::System.Int32 value);
+        partial void OnInvitationSentTodayChanged();
 
         #endregion
     

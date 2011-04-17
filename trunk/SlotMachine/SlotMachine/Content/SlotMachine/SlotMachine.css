@@ -1,0 +1,46 @@
+﻿.slotmachine-outer
+{
+    text-align: center;
+}
+
+.slotmachine
+{
+    display: block;
+    width: 500px;
+}
+
+.slotmachine .roles
+{
+    border: 6px solid #FF0000;
+    display: inline-block;
+}
+
+.slotmachine .roles .role
+{
+    border: medium solid #0000FF;
+    display: inline-block;
+    height: 200px;
+    width: 93px;
+    overflow: hidden;
+}
+
+.slotmachine .roles .role .spinning
+{
+    display: none;
+}
+
+.slotmachine .handle-outer
+{
+    display: inline-block;
+    padding-top: 60px;
+    vertical-align: top;
+}
+
+#handle
+{
+    cursor: pointer;
+}
+#overlay
+{
+    position: absolute;
+}

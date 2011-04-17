@@ -14,10 +14,12 @@
           </Key>
           <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="FacebookId" Type="bigint" Nullable="false" />
-          <Property Name="Points" Type="float" />
-          <Property Name="LastVisited" Type="datetime" />
-          <Property Name="TimesPlayed" Type="int" />
-          <Property Name="JackPotCount" Type="int" />
+          <Property Name="Points" Type="float" Nullable="false" />
+          <Property Name="LastVisited" Type="date" Nullable="false" />
+          <Property Name="TimesPlayed" Type="int" Nullable="false" />
+          <Property Name="JackPotCount" Type="int" Nullable="false" />
+          <Property Name="TotalInvitationSent" Type="int" Nullable="false" />
+          <Property Name="InvitationSentToday" Type="int" Nullable="false" />
         </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -32,10 +34,12 @@
           </Key>
           <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int64" Name="FacebookId" Nullable="false" />
-          <Property Type="Double" Name="Points" />
-          <Property Type="DateTime" Name="LastVisited" />
-          <Property Type="Int32" Name="TimesPlayed" />
-          <Property Type="Int32" Name="JackPotCount" />
+          <Property Type="Double" Name="Points" Nullable="false" />
+          <Property Type="DateTime" Name="LastVisited" Nullable="false" />
+          <Property Type="Int32" Name="TimesPlayed" Nullable="false" />
+          <Property Type="Int32" Name="JackPotCount" Nullable="false" />
+          <Property Type="Int32" Name="TotalInvitationSent" Nullable="false" />
+          <Property Type="Int32" Name="InvitationSentToday" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -46,6 +50,8 @@
           <EntitySetMapping Name="AppUsers">
             <EntityTypeMapping TypeName="SlotMachineDBModel.AppUser">
               <MappingFragment StoreEntitySet="AppUser">
+                <ScalarProperty Name="InvitationSentToday" ColumnName="InvitationSentToday" />
+                <ScalarProperty Name="TotalInvitationSent" ColumnName="TotalInvitationSent" />
                 <ScalarProperty Name="JackPotCount" ColumnName="JackPotCount" />
                 <ScalarProperty Name="TimesPlayed" ColumnName="TimesPlayed" />
                 <ScalarProperty Name="LastVisited" ColumnName="LastVisited" />
@@ -76,7 +82,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Slotmachine">
-        <EntityTypeShape EntityType="SlotMachineDBModel.AppUser" Width="1.5" PointX="0.75" PointY="0.75" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="SlotMachineDBModel.AppUser" Width="1.5" PointX="0.75" PointY="0.75" Height="2.5571907552083326" />
       </Diagram>
     </Diagrams>
   </Designer>
